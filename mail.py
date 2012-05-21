@@ -20,16 +20,26 @@ from email.mime.text import MIMEText
 sender = 'My name <me@domain.tld>'
 
 class Mailer():
-    """if your SMTP server requires auth fill smtpuser and smtpauth
-       else leave them empty
-    """
+    """A Simple emailer class"""
+
     def __init__(self, message, subject, recipients=[], sender=sender,
                 encoding="utf-8", charset="iso-8859-1",
-                smtpserver=None, smtpuser = None, smtppass = None):
-        if not smtpserver:
-            self.smtpserver = 'localhost'
-        else:
-            self.smtpserver = smtpserver
+                smtpserver='localhost', smtpuser = None,
+                smtppass = None):
+
+        """message, subject and recipients are required!
+           recipients is list of recipients
+
+           if your SMTP server requires auth, fill smtpuser and smtpauth
+           else leave them empty
+           smtpserver defaults to localhost
+
+           encoding is used to decode input strings
+           charset is used to encode message body
+
+        """
+
+        self.smtpserver = smtpserver
         self.smtpuser = smtpuser
         self.smtppass = smtppass
         self.sender = sender
