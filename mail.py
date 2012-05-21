@@ -1,13 +1,13 @@
 #!/usr/bin/env python2.6
 # -*- encoding: utf-8 -*-
 
-# Simple mail sender.
+# A Simple emailer script.
 # Uses correct encodings for header and body.
 #
 # Author: Antti Jaakkola <annttu(a)removethis.annttu.fi>
 #         Kapsi Internet-käyttäjät ry 2012
 #
-# This code is released under public domain without any 
+# This code is released under the public domain without any 
 # warranty! Use as you wish.
 
 import textwrap
