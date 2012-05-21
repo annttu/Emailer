@@ -30,6 +30,12 @@ class Mailer():
         """message, subject and recipients are required!
            recipients is list of recipients
 
+        recipient: list of recipient address, formatted as
+                realname <email>,
+                email,
+                [realname, email] or
+                (realname, email)
+
            if your SMTP server requires auth, fill smtpuser and smtpauth
            else leave them empty
            smtpserver defaults to localhost
@@ -81,13 +87,9 @@ class Mailer():
 
     def sendmail(self, message=None, subject=None, recipients=None):
         """Simple function to send emails easily
-        encoding: input string encoding
-        charset: output message body charset
-        recipient: list of recipient address, formatted as
-                realname <email>,
-                email,
-                [realname, email] or
-                (realname, email)
+           message: message to send
+           subject: message subject
+           recipients: list of recipients
         """
 
         if not recipients:
