@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
 # A Simple emailer script.
@@ -9,12 +9,18 @@
 #
 # This code is released under the public domain without any
 # warranty! Use as you wish.
+#
+# TODO:
+# python3 implementation
 
 import textwrap
 import smtplib
 import email.utils
 import time
-from email.Header import Header
+try:
+    from email.Header import Header
+except ImportError:
+    from email.header import Header
 from email.mime.text import MIMEText
 
 sender = 'My name <me@domain.tld>'
@@ -129,7 +135,7 @@ class Mailer():
                 print("Message sent successfully to %s" % recipient)
 
         if error != "":
-            raise smtplib.SMTPException, error
+            print("%s" % error)
 
     def __del__(self):
         self.session.quit()
@@ -149,5 +155,5 @@ if __name__ == "__main__":
         ['Another me', 'me@otherdomain.tld']
     ]
     mailer = Mailer(msg, 'Spam, delete me!!', recipients=recipients,
-    sender='me@myself.tld')
+    sender=sender)
     mailer.sendmail()
